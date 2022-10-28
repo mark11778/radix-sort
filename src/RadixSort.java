@@ -3,7 +3,7 @@ public class RadixSort {
         int[] numberoftimes = new int[10];
         int[] nextindex = new int[10];
         for (Integer integer : unsorted) {
-            numberoftimes[(int) (integer / (Math.pow(10, position)))] += 1;
+            numberoftimes[(int) Math.floor((integer/Math.pow(10, position)) % 10)] += 1;
         }
         int ongoingstart = 0;
         for(int i =0; i < 10; ++i) {
@@ -12,10 +12,10 @@ public class RadixSort {
         }
         int idx;
         Integer[] finalarray = new Integer[unsorted.length];
-        for(int i = 0; i < unsorted.length; ++i) {
-            idx = (int) (unsorted[i]/(Math.pow(10,position)));
+        for (Integer integer : unsorted) {
+            idx = (int) Math.floor((integer/Math.pow(10, position)) % 10);
             int otheridx = nextindex[idx];
-            finalarray[otheridx] = unsorted[i];
+            finalarray[otheridx] = integer;
             nextindex[idx] += 1;
         }
         return finalarray;
