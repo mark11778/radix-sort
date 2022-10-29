@@ -10,10 +10,9 @@ public class RadixSort {
             nextindex[i] = ongoingstart;
             ongoingstart += numberoftimes[i];
         }
-        int idx;
         Integer[] finalarray = new Integer[unsorted.length];
         for (Integer integer : unsorted) {
-            idx = (int) Math.floor((integer/Math.pow(10, position)) % 10);
+            int idx = (int) Math.floor((integer/Math.pow(10, position)) % 10);
             int otheridx = nextindex[idx];
             finalarray[otheridx] = integer;
             nextindex[idx] += 1;
